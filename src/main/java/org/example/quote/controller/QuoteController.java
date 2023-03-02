@@ -40,14 +40,7 @@ public class QuoteController {
 
     public void delete() {
         if(quotes.size() != 0){
-            System.out.printf("삭제할 명언번호 : ");
-            int num = Container.getScanner().nextInt();
-            if(quotes.get(num - 1).equals(null)){
-                System.out.println(num + "번 명언은 존재하지 않습니다.");
-            } else{
-                quotes.remove(num - 1);
-                System.out.println(num + "번 명언이 삭제되었습니다.");
-            }
+
         } else {
             System.out.println("삭제할 명언이 없습니다.");
         }
