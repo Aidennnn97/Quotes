@@ -1,6 +1,7 @@
 package org.example.quote.controller;
 
 import org.example.Container;
+import org.example.Request;
 import org.example.quote.entity.Quote;
 
 import java.util.ArrayList;
@@ -38,11 +39,28 @@ public class QuoteController {
         }
     }
 
-    public void delete() {
+    public void delete(Request request) {
         if(quotes.size() != 0){
-
+            int id = request.getIntParam("id", -1);    // 정수화 하고 실패하면 -1 리턴
+            if(id == -1){
+                System.out.println("id(정수)를 입력해 주세요.");
+            } else{
+                Quote quote = findById(id); // 입력된 id와 일치하는 명언객체 찾기
+                quotes.remove(quote);   // 찾은 명언객체를 리스트에서 제거
+                System.out.printf("%d번 명언이 삭제되었습니다.\n", id);
+            }
         } else {
             System.out.println("삭제할 명언이 없습니다.");
         }
     }
+
+    private Quote findById(int id){
+        for(Quote quote : quotes){  // quotes 리스트를 돌면서 입력된 id와 동일한 id값을 가진 quote를 찾음
+            if(quote.getId() == id){
+                return quote;
+            }
+        }
+        return null;
+    }
+
 }

@@ -13,6 +13,8 @@ public class Request {
 
         params = new HashMap<>();   // id=1&writer=22 를 key, value 타입의 Map으로 저장할 공간 {"id":"1", "writer":"22"} 처럼
 
+        if(commandBits.length == 1) return; // 명령어가 등록, 목록, 종료 처럼 뒤에 ?값이 없으면 리턴
+
         String[] paramBits = commandBits[1].split("&");  // & 기준으로 나눔 => [id=1, writer=22]
 
         for(String paramStr : paramBits){
@@ -31,6 +33,14 @@ public class Request {
 
     public String getActionCode() {
         return actionCode;
+    }
+
+    public int getIntParam(String key, int defaultValue) {
+        try{
+           return Integer.parseInt(getParam(key));  // 문자열로 넘어오기 때문에 수동 형변환을 해줘야 한다턴
+        } catch (NumberFormatException e){
+            return defaultValue;
+        }
     }
 
 }
