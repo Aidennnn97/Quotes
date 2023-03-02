@@ -38,8 +38,9 @@ public class App {
 //                    System.out.printf("params.id: %s\n", request.getParam("id"));
 //                    System.out.printf("params.writer: %s\n", request.getParam("writer"));
 //                    System.out.printf("params.sentence: %s\n", request.getParam("sentence"));
-
                     break;
+                case "수정":
+                    quoteController.modify(request);
             }
         }
     }
