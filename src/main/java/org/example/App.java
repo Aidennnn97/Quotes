@@ -10,21 +10,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    private final Scanner sc;
-    public App(Scanner sc) {
-        this.sc = sc;
-    }
 
     public void run() {
         System.out.println("== 명언 앱 ==");
 
         SystemController systemController = new SystemController();
-        QuoteController quoteController = new QuoteController(sc);
+        QuoteController quoteController = new QuoteController();
 
         while(true){
             System.out.println("등록 / 목록 / 수정 / 삭제 / 종료");
             System.out.printf("명령) ");
-            String order = sc.nextLine().trim();
+            String order = Container.getScanner().nextLine().trim();
             switch (order){
                 case "종료":
                     systemController.exit();

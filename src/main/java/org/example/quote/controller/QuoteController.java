@@ -1,5 +1,6 @@
 package org.example.quote.controller;
 
+import org.example.Container;
 import org.example.quote.entity.Quote;
 
 import java.util.ArrayList;
@@ -7,20 +8,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class QuoteController {
-    private final Scanner sc;
     private final List<Quote> quotes;    // 명언리스트
     private int quoteNum;   // 명언 번호
-    public QuoteController(Scanner sc){
-        this.sc = sc;
+    public QuoteController(){
         quotes = new ArrayList<>();    // 명언리스트
         quoteNum = 0;
     }
     public void write() {
         int id = quoteNum + 1;
         System.out.printf("명언 : ");
-        String sentence = sc.nextLine().trim();
+        String sentence = Container.getScanner().nextLine().trim();
         System.out.printf("작가 : ");
-        String writer = sc.nextLine().trim();
+        String writer = Container.getScanner().nextLine().trim();
         quotes.add(new Quote(id, writer, sentence));    // quotes 리스트에 quote타입의 명언, 작가 저장
         System.out.println(id + "번 명언이 등록되었습니다.");
         quoteNum = id;
@@ -42,7 +41,7 @@ public class QuoteController {
     public void delete() {
         if(quotes.size() != 0){
             System.out.printf("삭제할 명언번호 : ");
-            int num = sc.nextInt();
+            int num = Container.getScanner().nextInt();
             if(quotes.get(num - 1).equals(null)){
                 System.out.println(num + "번 명언은 존재하지 않습니다.");
             } else{
