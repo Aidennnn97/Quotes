@@ -21,6 +21,7 @@ public class Main {
                     System.out.printf("작가 : ");
                     String writer = sc.nextLine();
                     System.out.println(num + "번 명언이 등록되었습니다.");
+                    num++;
                     break;
             }
         }
