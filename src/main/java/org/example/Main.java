@@ -39,6 +39,16 @@ public class Main {
                         System.out.println("등록된 명언이 없습니다.");
                     }
                     break;
+                case "삭제":
+                    if(quotes.size() != 0){
+                        System.out.printf("삭제할 명언번호 : ");
+                        int num = sc.nextInt();
+                        quotes.remove(num - 1);
+                        System.out.println(num + "번 명언이 삭제되었습니다.");
+                    } else {
+                        System.out.println("삭제할 명언이 없습니다.");
+                    }
+                    break;
             }
         }
     }
