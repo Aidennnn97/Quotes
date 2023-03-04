@@ -1,11 +1,11 @@
 package org.example;
+// 라우팅
+// 은행가면 제일 처음에 어떤 업무로 왔는지 물어보는 역할
+//App : 라우팅, 고객이 올바른 컨트롤러를 만나도록 교통정리
 
 
 import org.example.quote.controller.QuoteController;
-import org.example.quote.entity.Quote;
 import org.example.system.controller.SystemController;
-
-import java.util.*;
 
 public class App {
 
